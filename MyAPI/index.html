@@ -7,40 +7,69 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Daftar Nama Mahasiswa Baru</h1>
+    <h1>Keterangan Tentang Diri Peserta Didik</h1>
     <ul id="contact-list"></ul>
 
-    <h2>Biodata</h2>
+    <h2></h2>
     <form id="add-contact-form">
         <label for="name">Nama:</label>
         <input type="text" id="name" required>
-        <label for="phone">NIM:</label>
+        <br>
+        <br>
+        <label for="phone">NISN:</label>
         <input type="text" id="phone" required> 
-        <label for="name">Jurusan:</label>
+        <br>
+        <br>
+        <label for="name">Tempat,Tanggal Lahir:</label>
         <input type="text" id="name" required>
-        <label for="phone">Prodi:</label>
+        <br>
+        <br>
+        <label for="phone">Jenis kelamin:</label>
         <input type="text" id="phone" required>
-        <label for="name">Jenis Kelamin:</label>
+        <br>
+        <br>
+        <label for="name">Agama:</label>
         <input type="text" id="name" required>
-        <label for="phone">Email:</label>
+        <br>
+        <br>
+        <label for="phone">Status dalam Keluarga:</label>
+        <input type="text" id="phone" required>
+        <br>
+        <br>
+        <label for="phone">Anak ke:</label>
+        <input type="text" id="phone" required>
+        <br>
+        <br>
+        <label for="phone">Alamat Peserta Didik:</label>
+        <input type="text" id="phone" required>
+        <br>
+        <br>
+        <label for="phone">Asal Sekolah:</label>
+        <input type="text" id="phone" required>
+        <br>
+        <br>
+        <label for="phone">Nama Ayah:</label>
+        <input type="text" id="phone" required>
+        <label for="phone">Nama Ibu:</label>
+        <input type="text" id="phone" required>
+        <br>
+        <br>
+        <label for="phone">No Telepon Rumah:</label>
+        <input type="text" id="phone" required>
+        <label for="phone">No Telepon :</label>
+        <input type="text" id="phone" required>
+        <br>
+        <br>
+        <label for="phone">Alamat Orang Tua:</label>
+        <input type="text" id="phone" required>
+        <br>
+        <br>
+        <label for="phone">Pekerjaan Ayah:</label>
+        <input type="text" id="phone" required>
+        <label for="phone">Pekerjaan Ibu:</label>
         <input type="text" id="phone" required>
         <button type="submit">Save</button>
     </form>
-
-    <h3>Biodata</h3>
-    <form id="add-contact-form">
-        <label for="name">Nama:</label>
-        <input type="text" id="name" required>
-        <label for="phone">NIM:</label>
-        <input type="text" id="phone" required> 
-        <label for="name">Jurusan:</label>
-        <input type="text" id="name" required>
-        <label for="phone">Prodi:</label>
-        <input type="text" id="phone" required>
-        <label for="name">Jenis Kelamin:</label>
-        <input type="text" id="name" required>
-        <label for="phone">Email:</label>
-        <input type="text" id="phone" required>
     <script>
         fetch('http://localhost:3000/contacts')
             .then((response) => response.json())
