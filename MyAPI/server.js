@@ -34,3 +34,16 @@ app.delete('/contacts/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`Server berjalan di http://localhost:${port}`);
 });
+app.get('/contacts', (req, res) => {
+  // Logika untuk mengambil daftar kontak dari file atau sumber data lainnya
+  // dan mengirimkannya sebagai respons
+  res.send('Daftar kontak');
+});
+app.post('/contacts', (req, res) => {
+  // Mendapatkan data kontak yang dikirimkan dalam body permintaan
+  const { name, phone } = req.body;
+
+  // Logika untuk menyimpan kontak ke file atau sumber data lainnya
+  // Berikan respons yang sesuai
+  res.send('Kontak berhasil ditambahkan');
+});
