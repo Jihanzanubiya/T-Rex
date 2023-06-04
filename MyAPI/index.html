@@ -7,6 +7,59 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Daftar Kontak Telepon</h1>
+    <ul id="contact-list"></ul>
+
+    <h2>Tambah Kontak Baru</h2>
+    <form id="add-contact-form">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" required>
+        <label for="phone">Nomor Telepon:</label>
+        <input type="text" id="phone" required>
+        <button type="submit">Tambah Kontak</button>
+    </form>
+
+    <script>
+        fetch('http://localhost:3000/contacts')
+            .then((response) => response.json())
+            .then((contacts) => {
+                const contactList = document.getElementById('contact-list');
+                contacts.forEach((contact) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${contact.name}: ${contact.phone}`;
+                    contactList.appendChild(li);
+                });
+            });
+
+        const addContactForm = document.getElementById('add-contact-form');
+        addContactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const nameInput = document.getElementById('name');
+            const phoneInput = document.getElementById('phone');
+
+            const newContact = {
+                name: nameInput.value,
+                phone: phoneInput.value,
+            };
+
+            fetch('http://localhost:3000/contacts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newContact),
+            })
+                .then((response) => response.json())
+                .then((contact) => {
+                    const contactList = document.getElementById('contact-list');
+                    const li = document.createElement('li');
+                    li.textContent = `${contact.name}: ${contact.phone}`;
+                    contactList.appendChild(li);
+
+                    nameInput.value = '';
+                    phoneInput.value = '';
+                });
+        });
+    </script>
 </body>
 </html>
