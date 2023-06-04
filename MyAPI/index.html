@@ -7,18 +7,40 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Daftar Kontak Telepon</h1>
+    <h1>Daftar Nama Mahasiswa Baru</h1>
     <ul id="contact-list"></ul>
 
-    <h2>Tambah Kontak Baru</h2>
+    <h2>Biodata</h2>
     <form id="add-contact-form">
         <label for="name">Nama:</label>
         <input type="text" id="name" required>
-        <label for="phone">Nomor Telepon:</label>
+        <label for="phone">NIM:</label>
+        <input type="text" id="phone" required> 
+        <label for="name">Jurusan:</label>
+        <input type="text" id="name" required>
+        <label for="phone">Prodi:</label>
         <input type="text" id="phone" required>
-        <button type="submit">Tambah Kontak</button>
+        <label for="name">Jenis Kelamin:</label>
+        <input type="text" id="name" required>
+        <label for="phone">Email:</label>
+        <input type="text" id="phone" required>
+        <button type="submit">Save</button>
     </form>
 
+    <h3>Biodata</h3>
+    <form id="add-contact-form">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" required>
+        <label for="phone">NIM:</label>
+        <input type="text" id="phone" required> 
+        <label for="name">Jurusan:</label>
+        <input type="text" id="name" required>
+        <label for="phone">Prodi:</label>
+        <input type="text" id="phone" required>
+        <label for="name">Jenis Kelamin:</label>
+        <input type="text" id="name" required>
+        <label for="phone">Email:</label>
+        <input type="text" id="phone" required>
     <script>
         fetch('http://localhost:3000/contacts')
             .then((response) => response.json())
