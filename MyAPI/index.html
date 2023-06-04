@@ -71,46 +71,51 @@
         <button type="submit">Save</button>
     </form>
     <script>
-        fetch('http://localhost:3000/contacts')
+        // Ambil daftar mahasiswa dari server dan tampilkan dalam daftar
+        fetch('http://localhost:3000/mahasiswa')
             .then((response) => response.json())
-            .then((contacts) => {
-                const contactList = document.getElementById('contact-list');
-                contacts.forEach((contact) => {
+            .then((mahasiswa) => {
+                const mahasiswaList = document.getElementById('mahasiswa-list');
+                mahasiswa.forEach((data, index) => {
                     const li = document.createElement('li');
-                    li.textContent = `${contact.name}: ${contact.phone}`;
-                    contactList.appendChild(li);
+                    li.innerHTML = `
+                        <strong>${index + 1}. Nama:</strong> ${data.nama}<br>
+                        Usia: ${data.usia}<br>
+                        Email: ${data.email}<br>
+                        Alamat: ${data.alamat}<br>
+                    `;
+                    mahasiswaList.appendChild(li);
                 });
             });
 
-        const addContactForm = document.getElementById('add-contact-form');
-        addContactForm.addEventListener('submit', (event) => {
+        // Tangkap peristiwa pengiriman formulir tambah mahasiswa
+        const addMahasiswaForm = document.getElementById('add-mahasiswa-form');
+        addMahasiswaForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            const nameInput = document.getElementById('name');
-            const phoneInput = document.getElementById('phone');
+            const namaInput = document.getElementById('nama');
+            const nimInput = document.getElementById('nim');
+            const emailInput = document.getElementById('email');
+            const alamatInput = document.getElementById('alamat');
+            const mediaSosialInput = document.getElementById('media-sosial');
+            const nama = namaInput.value;
+            const nim = nimInput.value;
+            const email = emailInput.value;
+            const alamat = alamatInput.value;
+            const mediaSosial = mediaSosialInput.value;
 
-            const newContact = {
-                name: nameInput.value,
-                phone: phoneInput.value,
-            };
-
-            fetch('http://localhost:3000/contacts', {
+            // Kirim permintaan POST ke server untuk menambahkan mahasiswa baru
+            fetch('http://localhost:3000/mahasiswa', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newContact),
+                body: JSON.stringify({ nama, nim, email, alamat, mediaSosial }),
             })
-                .then((response) => response.json())
-                .then((contact) => {
-                    const contactList = document.getElementById('contact-list');
-                    const li = document.createElement('li');
-                    li.textContent = `${contact.name}: ${contact.phone}`;
-                    contactList.appendChild(li);
-
-                    nameInput.value = '';
-                    phoneInput.value = '';
-                });
-        });
-    </script>
-</body>
-</html>
+            .then((response) => response.json())
+            .then((newMahasiswa) => {
+                // Tampilkan mahasiswa baru dalam daftar
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>${mahasiswa.length + 1}. Nama:</strong> ${newMahasiswa.nama}<br>
+                    Usia: ${newMahasiswa.usia}<br>
+                    Email: ${new
